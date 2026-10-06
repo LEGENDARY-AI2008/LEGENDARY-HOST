@@ -1,9 +1,3 @@
-// ============================================================
-// LËGĒNDÃRY BØT — DEPLOY LOADER (env version)
-// Config now comes from environment variables, so Legendary Host
-// can create the service and set the values through the Render API.
-// You can still edit the fallback values below for manual deploys.
-// ============================================================
 const { execSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
@@ -38,11 +32,9 @@ function moveFilesToRoot(srcDir, destDir) {
   for (const file of files) {
     const srcPath = path.join(srcDir, file.name)
     const destPath = path.join(destDir, file.name)
-
     if (fs.existsSync(destPath)) {
       fs.rmSync(destPath, { recursive: true, force: true })
     }
-
     fs.renameSync(srcPath, destPath)
   }
 }
